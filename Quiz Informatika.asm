@@ -41,4 +41,398 @@ QA5 DB '   a) Sarjana Terapan$'
 QA55 DB '   b) Strata 1 (S1)$'
 QA555 DB '   c) Ahli Madya$'
 
+.CODE
+MAIN PROC 
+    
+    MOV AX,@DATA
+	MOV DS,AX
+    
+    LEA DX,MSG20
+	MOV AH,9
+	INT 21H
+	
+	CALL NL
+   
+    LEA DX,MSG21
+	MOV AH,9
+	INT 21H
+	
+	CALL NL
+	   
+	LEA DX,MSG1
+	MOV AH,9
+	INT 21H
+	
+	CALL NL
+	
+	LEA DX,MSG22
+	MOV AH,9
+	INT 21H
+	
+	CALL NL
+   
+    LEA DX,MSG23
+	MOV AH,9
+	INT 21H
+	
+	CALL NL 
+	
+	LEA DX,MSG24
+	MOV AH,9
+	INT 21H
+	
+	CALL NL
+    
+	LEA DX,MSG2
+	MOV AH,9
+	INT 21H
+    
+	CALL NL
+    
+	LEA DX,MSG3
+	MOV AH,9
+	INT 21H
+    
+    CALL NL
+    
+	LEA DX,MSG4
+	MOV AH,9
+	INT 21H 
+	
+	CALL NL
+	
+	LEA DX,MSG24
+	MOV AH,9
+	INT 21H
+    
+   
+	
+	START:
+	MOV BL, 0  
+    CALL NL
+    
+	LEA DX,MSG5
+	MOV AH,9
+	INT 21H
+	
+	
+	MOV AH, 1
+	INT 21H
+	
+	CMP AL, 0DH
+	JE QSN1
+	JNE START
+	
+	QSN1:
+	CALL NL
+    
+    LEA DX,MSG24
+	MOV AH,9
+	INT 21H
+	
+	CALL NL
 
+	LEA DX,Q1
+	MOV AH,9
+	INT 21H
+	
+	CALL NL
+    
+	LEA DX,QA1
+	MOV AH,9
+	INT 21H
+	
+	CALL NL
+
+	LEA DX,QA11
+	MOV AH,9
+	INT 21H
+	
+	CALL NL
+
+	LEA DX,QA111
+	MOV AH,9
+	INT 21H
+	
+	CALL NL
+
+	LEA DX,MSG24
+	MOV AH,9
+	INT 21H
+	
+	CALL NL
+
+	LEA DX,MSG25
+	MOV AH,9
+	INT 21H
+	
+	CALL NL
+    
+	MOV AH, 1
+	INT 21H
+	CMP AL, 'a'
+	JE QSN2
+    JNE QSNW2
+	
+	QSN2:
+
+	CALL NL
+    
+	LEA DX,MSG24
+	MOV AH,9
+	INT 21H
+	
+	CALL NL
+
+	LEA DX,MSG6
+	MOV AH,9
+	INT 21H
+	
+	INC BL
+	CALL NL
+    
+	CALL QN2 
+	
+	CALL INPUT
+	
+	CMP AL, 'b'
+	JE QSN3
+	JNE QSNW3
+	
+	QSNW2:
+	CALL NL
+    
+    LEA DX,MSG24
+	MOV AH,9
+	INT 21H
+	
+	CALL NL
+
+	LEA DX,MSG7
+	MOV AH,9
+	INT 21H
+	
+	
+	CALL NL
+    
+	CALL QN2 
+	CALL INPUT
+	
+	CMP AL, 'b'
+	JE QSN3 
+	JNE QSNW3
+	
+	
+	QSN3:
+	CALL NL
+    
+	LEA DX,MSG24
+	MOV AH,9
+	INT 21H
+	
+	CALL NL
+
+	LEA DX,MSG6
+	MOV AH,9
+	INT 21H
+	
+	INC BL
+	CALL NL    
+
+    
+	CALL QN3 
+	CALL INPUT
+	
+	CMP AL, 'c'
+	JE QSN4
+	JNE QSNW4
+	
+	QSNW3:
+	CALL NL
+    
+    LEA DX,MSG24
+	MOV AH,9
+	INT 21H
+	
+	CALL NL
+
+	LEA DX,MSG7
+	MOV AH,9
+	INT 21H
+	
+	
+	CALL NL
+    
+	CALL QN3
+	CALL INPUT
+	
+	CMP AL, 'c'
+	JE QSN4 
+	JNE QSNW4
+	
+	QSN4:
+	CALL NL
+    
+    LEA DX,MSG24
+	MOV AH,9
+	INT 21H
+	
+	CALL NL
+
+	LEA DX,MSG6
+	MOV AH,9
+	INT 21H
+	
+	INC BL
+	CALL NL
+    
+	CALL QN4 
+	CALL INPUT
+	
+	CMP AL, 'b'
+	JE QSN5
+	JNE QSNW5
+	
+	QSNW4:
+	CALL NL
+    
+    LEA DX,MSG24
+	MOV AH,9
+	INT 21H
+	
+	CALL NL
+
+	LEA DX,MSG7
+	MOV AH,9
+	INT 21H
+	
+	
+	CALL NL
+    
+	CALL QN4 
+	CALL INPUT
+	
+	CMP AL, 'b'
+	JE QSN5 
+	JNE QSNW5
+	
+	QSN5:
+	CALL NL
+    
+    LEA DX,MSG24
+	MOV AH,9
+	INT 21H
+	
+	CALL NL
+
+	LEA DX,MSG6
+	MOV AH,9
+	INT 21H
+	
+	INC BL
+	CALL NL
+    
+	CALL QN5 
+	
+	CALL INPUT
+	
+	CMP AL, 'a'
+	JE EXIT
+	JNE EXITW
+	
+	QSNW5:
+	CALL NL
+
+    LEA DX,MSG24
+	MOV AH,9
+	INT 21H
+	
+	CALL NL
+
+	LEA DX,MSG7
+	MOV AH,9
+	INT 21H
+	
+	
+	CALL NL
+    
+	CALL QN5 
+	CALL INPUT
+	
+	CMP AL, 'a'
+	JE EXIT 
+	JNE EXITW
+	
+	EXIT:
+	CALL NL 
+    
+    LEA DX,MSG24
+	MOV AH,9
+	INT 21H
+	
+	CALL NL
+
+	LEA DX,MSG6
+	MOV AH,9
+	INT 21H
+	
+	INC BL
+	CALL NL
+	CALL NL
+    
+	LEA DX,MSG8
+	MOV AH,9
+	INT 21H
+	
+	CALL NL
+    
+	LEA DX,MSG9
+	MOV AH,9
+	INT 21H
+	
+	ADD BL, 48	
+	
+	CMP BL,57
+	JG TEN
+	MOV AH, 2
+	MOV DL, BL
+	INT 21H
+	JMP EXIT1
+	
+	EXITW:
+	CALL NL
+    
+    LEA DX,MSG24
+	MOV AH,9
+	INT 21H
+	
+	CALL NL
+
+	LEA DX,MSG7
+	MOV AH,9
+	INT 21H
+	
+	
+	CALL NL
+	CALL NL  
+
+    
+	LEA DX,MSG8
+	MOV AH,9
+	INT 21H 
+	
+	CALL NL
+    CALL NL
+    
+	LEA DX,MSG9
+	MOV AH,9
+	INT 21H
+	
+	ADD BL,48	
+	MOV AH,2
+	MOV DL, BL
+	INT 21H
+	
+	JMP EXIT1
+	
+	
